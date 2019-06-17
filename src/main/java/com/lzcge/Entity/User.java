@@ -1,61 +1,27 @@
 package com.lzcge.Entity;
 
+import com.lzcge.Common.Validates.Add;
+import com.lzcge.Common.Validates.Update;
+import lombok.Data;
+
+
+import javax.validation.constraints.NotNull;
+
+
 import java.io.Serializable;
 
+
+@Data
 public class User implements Serializable{
+
+	@NotNull(message = "id不能为空", groups = {Update.class})
 	private Integer userId;
+	@NotNull(message = "用户名不能为空", groups = {Update.class,Add.class})
 	private String username;
+	@NotNull(message = "密码不能为空", groups = {Update.class,Add.class})
 	private String password;
+	@NotNull(message = "年龄不能为空", groups = {Update.class,Add.class})
 	private Integer age;
 
-	public Integer getUserId() {
-		return userId;
-	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Integer getAge() {
-		return age;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
-	}
-
-	public User(Integer userId, String username, String password, Integer age) {
-		this.userId = userId;
-		this.username = username;
-		this.password = password;
-		this.age = age;
-	}
-
-	public User(){}
-
-	@Override
-	public String toString() {
-		return "User{" +
-				"userId=" + userId +
-				", username='" + username + '\'' +
-				", password='" + password + '\'' +
-				", age=" + age +
-				'}';
-	}
 }
